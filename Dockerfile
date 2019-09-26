@@ -30,7 +30,8 @@ USER root
 COPY jenkins-agent /usr/local/bin/jenkins-agent
 RUN chmod +x /usr/local/bin/jenkins-agent &&\
     ln -s /usr/local/bin/jenkins-agent /usr/local/bin/jenkins-slave
-USER ${user}
+#USER ${user}
 RUN apt-get update -y
-RUN apt-get install -y sudo bc dos2unix git wget
+RUN apt-get install -y sudo bc dos2unix git wget cron rsync vim python-pip docker 
+RUN pip install  -U docker-compose 
 ENTRYPOINT ["jenkins-agent"]
